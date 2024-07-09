@@ -23,6 +23,22 @@ app.post("/delete/:index",(req,res)=>{
     res.redirect("/")
 })
 
+app.get("/edit/:index", (req, res)=>{
+    let index = req.params.index
+    console.log(index);
+    console.log(tasks[index]);
+    let edittodo = tasks[index]
+    res.render('edit',{edittodo, index})
+})
+
+app.post('/edit/:index',(req, res)=>{
+    console.log(req.params);
+    let {index} = req.params
+    tasks[index] = req.body;
+    console.log(tasks);
+    res.redirect('/')
+})
+
 
 
 
